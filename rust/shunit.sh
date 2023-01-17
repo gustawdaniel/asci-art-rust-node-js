@@ -1,9 +1,9 @@
-#! /bin/sh
+#!/bin/bash
 
 testInOut() {
   for file in `ls ../cases/in*`
   do
-    echo "${file/in/"out"}"
+    echo "${file/in/"out"}";
     RES=$(cat < ${file} | cargo run)
     EXP=$(cat "${file/in/"out"}")
     assertEquals "${EXP}" "${RES}"
