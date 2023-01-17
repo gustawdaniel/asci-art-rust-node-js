@@ -32,6 +32,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install shunit
         run: sudo apt install -y shunit2
+      - name: Check files
+        run: ls ../cases/in*
+        working-directory: ${{ env.working-directory }}
       - name: Test with shunit
         run: ./shunit.sh
         working-directory: ${{ env.working-directory }}
