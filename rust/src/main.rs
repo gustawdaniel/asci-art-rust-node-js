@@ -85,7 +85,7 @@ fn main() {
         let mut input_line = String::new();
         io::stdin().read_line(&mut input_line).unwrap();
         let row = input_line.trim_matches('\n').to_string();
-        a.set_row(row);
+        a.set_row(row)
     }
 
     let res = a.get(t);
