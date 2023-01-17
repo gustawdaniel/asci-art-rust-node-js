@@ -32,17 +32,17 @@ class Alphabet {
     }
 
     setRow(line: string) {
-        this.rows.push(line);
+        this.rows.push(line.padEnd((25 + 2) * this.l, " "));
     }
 
     get(word: string): string[] {
         const aPosition = 'A'.charCodeAt(0);
         let rows = [...new Array(this.h)].map(() => '');
-        console.log("word", word);
+        // console.log("word", word);
         for (let letter of word) {
             let pos: number = letter.toUpperCase().charCodeAt(0) - aPosition;
-            if(pos < 0 || pos > 25) pos = this.rows[0].length / this.l - 1;
-            console.log("pos", letter, pos, pos * (this.l), pos * (this.l + 1));
+            if (pos < 0 || pos > 25) pos = this.rows[0].length / this.l - 1;
+            // console.log("pos", letter, pos, pos * (this.l), pos * (this.l + 1));
             for (let i = 0; i < this.h; i++) {
                 rows[i] += this.rows[i].substring(pos * this.l, (pos + 1) * this.l);
             }
@@ -55,7 +55,7 @@ function start() {
     const L: number = parseInt(readline());
     const H: number = parseInt(readline());
     const T: string = readline();
-    console.log(L, H, T);
+    // console.log(L, H, T);
     const a = new Alphabet(L, H);
     for (let i = 0; i < H; i++) {
         const ROW: string = readline();
@@ -64,6 +64,6 @@ function start() {
 
     const res = a.get(T);
     res.forEach((row) => {
-        console.log(row);
+        console.log(row.replace(/\s+$/, ''));
     });
 }

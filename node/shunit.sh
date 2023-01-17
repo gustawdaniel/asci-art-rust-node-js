@@ -3,7 +3,7 @@
 testInOut() {
   for file in `ls ../cases/in*`
   do
-    RES=$(cat < ${file} | cargo run)
+    RES=$(cat < ${file} | ts-node index.ts)
     EXP=$(cat "${file/in/"out"}")
     assertEquals "${EXP}" "${RES}"
   done;
