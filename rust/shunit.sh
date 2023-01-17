@@ -3,8 +3,8 @@
 testInOut() {
   for file in `ls ../cases/in*`
   do
-#    echo $file;
     RES=$(cat < ${file} | cargo run)
+    echo "${file/in/"out"}";
     EXP=$(cat "${file/in/"out"}")
     assertEquals "${EXP}" "${RES}"
   done;
